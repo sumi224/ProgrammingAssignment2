@@ -1,0 +1,24 @@
+Enter file contents here
+makeCacheMatrix<-function(x=matrix()){
+m<-NuLL
+set<-function(y){
+x<<-y
+m<<-NULL
+}
+get<-function()x
+setsolve<-function(solve){m<<-solve}
+getsolve<-function(){m}
+list(set=set,get=get,setmean=setmean,getmean=getmean)
+}
+
+cacheSolve<-function(x,...){
+m<-x$getsolve()
+if(!is.null(m)){
+message("getting cached data")
+return(m)
+}
+data<-x$get()
+m<-solve(data,...)
+x$setsolve(m)
+m
+}
